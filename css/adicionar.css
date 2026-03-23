@@ -25,10 +25,10 @@ header {
 }
 
 /* ================= ALERTA (MENSAGENS) ================= */
-/* Deixei um visual base bonito, aguardando o seu estilo! */
+
 .alerta {
     max-width: 500px;
-    margin: 30px auto -10px auto; /* Centraliza e empurra o formulário um pouco pra baixo */
+    margin: 30px auto -10px auto; 
     padding: 15px 20px;
     border-radius: 6px;
     font-size: 15px;

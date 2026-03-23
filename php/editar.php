@@ -1,7 +1,6 @@
 <?php
 require_once 'conexao.php';
 
-// 1. Pegar o ID que veio pela URL (ex: editar.php?id=5)
 $id = $_GET['id'] ?? null;
 
 if (!$id) {
@@ -9,13 +8,11 @@ if (!$id) {
     exit;
 }
 
-// 2. Buscar os dados desse produto específico no banco
 $stmt = $pdo->prepare("SELECT * FROM produtos WHERE id = :id");
 $stmt->bindValue(':id', $id);
 $stmt->execute();
 $produto = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Se o ID não existir no banco, volta para a lista
 if (!$produto) {
     header("Location: estoque.php");
     exit;

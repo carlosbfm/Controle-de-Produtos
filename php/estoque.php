@@ -18,7 +18,7 @@ if (isset($_GET['excluir_id'])) {
 
 // --- LÓGICA DE BUSCA E PAGINAÇÃO ---
 $busca = $_GET['busca'] ?? '';
-$limite = 5; // Quantidade de produtos por página
+$limite = 5; 
 $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 if ($paginaAtual < 1) $paginaAtual = 1;
 

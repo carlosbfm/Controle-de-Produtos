@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         // Guarda a mensagem de sucesso
         $mensagem = "<strong>Sucesso!</strong> O produto <b>$descricao</b> foi salvo cadastrado no sistema!";
-        $tipoAlerta = "sucesso"; // Vamos usar isso no CSS!
+        $tipoAlerta = "sucesso";
 
     } catch(PDOException $e) {
         // Guarda a mensagem de erro
