@@ -190,3 +190,72 @@ tbody td a:last-child:hover {
     border-color: #1e3a8a;
     cursor: default;
 }
+
+/* ================= RESPONSIVIDADE (MOBILE) ================= */
+
+@media (max-width: 768px) {
+    /* 1. Ajuste do Header */
+    header {
+        padding: 15px 20px;
+        flex-direction: row; /* Mantém título e ícone na mesma linha */
+    }
+
+    header h1 {
+        font-size: 16px;
+    }
+
+    /* 2. Ajuste do Conteúdo Principal */
+    main {
+        margin: 15px;
+        padding: 15px;
+    }
+
+    /* 3. Empilhando a Busca e o Botão Novo */
+    main > div:first-child {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    main > div:first-child form {
+        max-width: 100%; /* Busca ocupa a largura toda */
+    }
+
+    main > div:first-child > a {
+        justify-content: center; /* Centraliza o texto do botão */
+        width: 100%;
+    }
+
+    /* 4. O Pulo do Gato para Tabelas no Celular */
+    /* Garanta que sua <table> esteja dentro de uma <div class="table-container"> */
+    .table-container {
+        overflow-x: auto; /* Cria barra de rolagem horizontal se necessário */
+        -webkit-overflow-scrolling: touch;
+        margin-top: 10px;
+    }
+
+    table {
+        min-width: 600px; /* Impede a tabela de achatar demais os dados */
+    }
+
+    thead th {
+        padding: 10px;
+        font-size: 11px;
+    }
+
+    tbody td {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    /* 5. Paginação mais amigável ao toque */
+    .paginacao {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .paginacao a {
+        padding: 10px 15px; /* Botões maiores para o dedo */
+        font-size: 16px;
+    }
+}

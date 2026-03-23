@@ -105,3 +105,42 @@ a:hover {
     color: #ef4444; 
     text-decoration: underline;
 }
+
+/* ================= RESPONSIVIDADE (MOBILE) ================= */
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px; /* Margem leve nas laterais da tela */
+    }
+
+    header {
+        font-size: 18px;
+        padding: 15px;
+    }
+
+    form {
+        width: 100%;       /* Ocupa a largura disponível */
+        max-width: 100%; 
+        padding: 20px;     /* Diminui o recuo interno para ganhar espaço */
+        margin: 20px auto; /* Diminui o espaço no topo */
+    }
+
+    label {
+        font-size: 13px;
+    }
+
+    input {
+        font-size: 16px;   /* Tamanho ideal para evitar zoom automático no iOS */
+        padding: 14px;     /* Aumenta a área de toque */
+    }
+
+    button {
+        font-size: 16px;
+        padding: 16px;     /* Botão maior para facilitar o clique com o polegar */
+    }
+
+    a {
+        margin-top: 10px;
+        padding: 10px;     /* Facilita clicar no link de 'Voltar' */
+    }
+}

@@ -120,3 +120,44 @@ button:hover {
     color: #ef4444;
     text-decoration: underline;
 }
+
+/* ================= RESPONSIVIDADE (MOBILE) ================= */
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px; /* Evita que o conteúdo cole nas bordas da tela */
+    }
+
+    header {
+        font-size: 18px;
+        padding: 15px;
+        border-radius: 0 0 10px 10px; /* Um detalhe visual pros cantos */
+    }
+
+    form {
+        width: 100%; /* Ocupa a largura total disponível */
+        max-width: 100%; 
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .alerta {
+        width: 100%;
+        margin-top: 15px;
+        font-size: 14px;
+    }
+
+    input, button {
+        font-size: 16px; /* Evita o zoom automático do iPhone ao focar no input */
+        padding: 14px;   /* Área de toque maior para os dedos */
+    }
+
+    button {
+        margin-top: 10px;
+    }
+
+    .btn-voltar {
+        margin-top: 20px;
+        padding: 10px;
+    }
+}

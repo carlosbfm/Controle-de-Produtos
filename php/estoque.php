@@ -1,7 +1,6 @@
 <?php
 require_once 'conexao.php';
 
-// --- LÓGICA DE EXCLUSÃO ---
 if (isset($_GET['excluir_id'])) {
     $idParaExcluir = $_GET['excluir_id'];
     try {
@@ -16,16 +15,13 @@ if (isset($_GET['excluir_id'])) {
     }
 }
 
-// --- LÓGICA DE BUSCA E PAGINAÇÃO ---
 $busca = $_GET['busca'] ?? '';
 $limite = 5; 
 $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 if ($paginaAtual < 1) $paginaAtual = 1;
-
-$offset = ($paginaAtual - 1) * $limite; // Calcula quantos itens pular
+$offset = ($paginaAtual - 1) * $limite;
 
 try {
-    // 1. Descobrir o total de registros (para calcular o total de páginas)
     if (!empty($busca)) {
         $sqlTotal = "SELECT COUNT(*) FROM produtos WHERE descricao ILIKE :busca";
         $stmtTotal = $pdo->prepare($sqlTotal);
@@ -36,9 +32,8 @@ try {
         $stmtTotal = $pdo->query($sqlTotal);
     }
     $totalRegistros = $stmtTotal->fetchColumn();
-    $totalPaginas = ceil($totalRegistros / $limite); // Arredonda pra cima
+    $totalPaginas = ceil($totalRegistros / $limite);
 
-    // 2. Buscar apenas os itens da página atual
     if (!empty($busca)) {
         $sql = "SELECT * FROM produtos WHERE descricao ILIKE :busca ORDER BY id DESC LIMIT :limite OFFSET :offset";
         $stmt = $pdo->prepare($sql);
@@ -99,47 +94,48 @@ try {
             </a> 
         </div>
 
-        <table border="1" width="100%">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Descrição</th>
-                    <th>Quantidade</th>
-                    <th>Preço (R$)</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (count($listaProdutos) > 0): ?>
-                    <?php foreach ($listaProdutos as $produto): ?>
-                        <tr>
-                            <td><?= $produto['id'] ?></td>
-                            <td><?= $produto['descricao'] ?></td>
-                            <td><?= $produto['quantidade'] ?></td>
-                            <td><?= number_format($produto['preco'], 2, ',', '.') ?></td>
-                            <td>
-                                <a href="editar.php?id=<?= $produto['id'] ?>">
-                                    <i class="fi fi-rr-document"></i>
-                                </a> 
-                                | 
-                                <a href="?excluir_id=<?= $produto['id'] ?>" onclick="return confirm('Excluir <?= $produto['descricao'] ?>?');">
-                                    <i class="fi fi-rr-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php else: ?>
+        <div class="table-container">
+            <table>
+                <thead>
                     <tr>
-                        <td colspan="5" style="text-align: center;">Nenhum item encontrado.</td>
+                        <th>ID</th>
+                        <th>Descrição</th>
+                        <th>Quantidade</th>
+                        <th>Preço (R$)</th>
+                        <th>Ações</th>
                     </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php if (count($listaProdutos) > 0): ?>
+                        <?php foreach ($listaProdutos as $produto): ?>
+                            <tr>
+                                <td><?= $produto['id'] ?></td>
+                                <td><?= $produto['descricao'] ?></td>
+                                <td><?= $produto['quantidade'] ?></td>
+                                <td><?= number_format($produto['preco'], 2, ',', '.') ?></td>
+                                <td>
+                                    <a href="editar.php?id=<?= $produto['id'] ?>">
+                                        <i class="fi fi-rr-document"></i>
+                                    </a> 
+                                    | 
+                                    <a href="?excluir_id=<?= $produto['id'] ?>" onclick="return confirm('Excluir <?= $produto['descricao'] ?>?');">
+                                        <i class="fi fi-rr-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="5" style="text-align: center;">Nenhum item encontrado.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
 
         <?php if ($totalPaginas > 1): ?>
             <div class="paginacao">
                 <?php 
-                // Preserva a busca na URL ao mudar de página
                 $linkBusca = !empty($busca) ? "&busca=" . urlencode($busca) : "";
                 ?>
 
