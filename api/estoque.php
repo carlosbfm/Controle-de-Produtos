@@ -1,5 +1,5 @@
 <?php
-require_once '../conexao.php';
+require_once 'conexao.php';
 
 if (isset($_GET['excluir_id'])) {
     $idParaExcluir = $_GET['excluir_id'];
