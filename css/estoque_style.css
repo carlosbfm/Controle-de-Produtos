@@ -1,0 +1,193 @@
+/* Importa a fonte moderna */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f6f8; 
+    color: #333;
+}
+
+/* ================= HEADER (BARRA SÓLIDA AZUL) ================= */
+header {
+    background-color: #1e3a8a; /* Azul Marinho no fundo */
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+header nav i {
+    color: white;
+    font-size: 22px;
+}
+
+/* ================= CONTEÚDO PRINCIPAL ================= */
+main {
+    margin: 30px auto;
+    max-width: 1200px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    padding: 24px;
+}
+
+/* ================= BARRA DE BUSCA E BOTÃO NOVO ================= */
+main > div:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* Formulário de Busca */
+main > div:first-child form {
+    display: flex !important;
+    align-items: center;
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 8px 15px;
+    width: 100%;
+    max-width: 450px;
+    transition: 0.3s;
+}
+
+main > div:first-child form:focus-within {
+    border-color: #1e3a8a; 
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+}
+
+main > div:first-child form i {
+    color: #94a3b8;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+main > div:first-child form input {
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 5px;
+    width: 100%;
+    font-size: 14px;
+    color: #334155;
+}
+
+/* Botão Novo em Azul */
+main > div:first-child > a {
+    background-color: #1e3a8a;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+main > div:first-child > a:hover {
+    background-color: #1e40af;
+}
+
+/* ================= TABELA ESTILO CONSULTA ================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: none !important;
+}
+
+/* Cabeçalho da Tabela com Fundo Azul Claro */
+thead th {
+    background-color: #f1f5f9; 
+    color: #1e3a8a;            
+    text-align: left;
+    padding: 15px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 2px solid #1e3a8a; 
+}
+
+tbody td {
+    padding: 15px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #475569;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Ícones de Ação (Editar / Excluir) */
+tbody td a {
+    text-decoration: none;
+    color: #64748b;
+    margin-right: 10px;
+    font-size: 18px;
+    transition: 0.2s;
+}
+
+tbody td a:hover {
+    color: #1e3a8a;
+}
+
+tbody td a:last-child:hover {
+    color: #ef4444; /* Lixeira vermelha */
+}
+
+/* ================= PAGINAÇÃO ================= */
+.paginacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.paginacao a {
+    text-decoration: none;
+    color: #1e3a8a;
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.paginacao a:hover {
+    background-color: #e2e8f0;
+    border-color: #94a3b8;
+}
+
+/* Destaca a página atual na cor azul */
+.paginacao a.ativo {
+    background-color: #1e3a8a;
+    color: white;
+    border-color: #1e3a8a;
+    cursor: default;
+}
