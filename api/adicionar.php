@@ -1,7 +1,6 @@
 <?php
 require_once 'conexao.php';
 
-// Variáveis para guardar a mensagem e não imprimir antes da hora
 $mensagem = "";
 $tipoAlerta = "";
 
@@ -12,21 +11,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $preco = $_POST['price']; 
 
     try {
-        $sql = "INSERT INTO produtos (descricao, quantidade, preco) 
-                VALUES (:descricao, :quantidade, :preco)";
-        
+        $sql = "INSERT INTO produtos (descricao, quantidade, preco) VALUES (:descricao, :quantidade, :preco)";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':descricao', $descricao);
         $stmt->bindValue(':quantidade', $quantidade);
         $stmt->bindValue(':preco', $preco);
         $stmt->execute();
 
-        // Guarda a mensagem de sucesso
-        $mensagem = "<strong>Sucesso!</strong> O produto <b>$descricao</b> foi salvo cadastrado no sistema!";
+        $mensagem = "<strong>Sucesso!</strong> O produto <b>$descricao</b> foi cadastrado no sistema!";
         $tipoAlerta = "sucesso";
 
     } catch(PDOException $e) {
-        // Guarda a mensagem de erro
         $mensagem = "<strong>Erro ao salvar:</strong> " . $e->getMessage();
         $tipoAlerta = "erro";
     }

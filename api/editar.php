@@ -18,7 +18,6 @@ if (!$produto) {
     exit;
 }
 
-// 3. Lógica para SALVAR a alteração (POST)
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $descricao = $_POST['descricao'];
     $quantidade = $_POST['quantidade'];
@@ -33,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmtUpdate->bindValue(':id', $id);
         $stmtUpdate->execute();
 
-        header("Location: estoque.php"); // Volta para o estoque após salvar
+        header("Location: estoque.php");
         exit;
     } catch(PDOException $e) {
         die("Erro ao atualizar: " . $e->getMessage());
@@ -54,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <form action="" method="POST">
         <label>Nome do produto</label>
-        <input type="text" name="descricao" value="<?= $produto['descricao'] ?>" required>
+        <input type="text" name="descricao" value="<?= htmlspecialchars($produto['descricao']) ?>" required>
 
         <label>Quantidade</label>
         <input type="number" name="quantidade" value="<?= $produto['quantidade'] ?>" required>
@@ -65,7 +64,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <button type="submit">Salvar Alterações</button>
     </form>
 
-    <br>
-    <a href="estoque.php">Cancelar</a>
+    <a href="estoque.php" class="btn-voltar">Cancelar</a>
 </body>
 </html>

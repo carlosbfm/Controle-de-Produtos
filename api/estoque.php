@@ -1,5 +1,5 @@
 <?php
-require_once 'conexao.php';
+require_once '../conexao.php';
 
 if (isset($_GET['excluir_id'])) {
     $idParaExcluir = $_GET['excluir_id'];
@@ -110,7 +110,7 @@ try {
                         <?php foreach ($listaProdutos as $produto): ?>
                             <tr>
                                 <td><?= $produto['id'] ?></td>
-                                <td><?= $produto['descricao'] ?></td>
+                                <td><?= htmlspecialchars($produto['descricao']) ?></td>
                                 <td><?= $produto['quantidade'] ?></td>
                                 <td><?= number_format($produto['preco'], 2, ',', '.') ?></td>
                                 <td>
