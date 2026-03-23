@@ -1,0 +1,17 @@
+{
+  "functions": {
+    "php/*.php": {
+      "runtime": "vercel-php@0.7.0"
+    }
+  },
+  "routes": [
+    { 
+      "src": "/", 
+      "dest": "/php/estoque.php" 
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/php/$1"
+    }
+  ]
+}
