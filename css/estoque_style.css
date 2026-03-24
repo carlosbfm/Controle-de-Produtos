@@ -171,6 +171,7 @@ tbody td a {
     border-color: #1e3a8a;
 }
 
+/* ================= AJUSTE MOBILE REDUZIDO ================= */
 @media (max-width: 600px) {
     main {
         margin: 10px;
@@ -179,19 +180,25 @@ tbody td a {
 
     main > div:first-child {
         flex-direction: row;
-        gap: 10px;
+        gap: 8px;
     }
 
     main > div:first-child form {
-        max-width: 65%;
-        padding: 8px 12px;
+        flex: 0 0 55%; /* Fixa a barra em 55% da largura */
+        padding: 8px 10px;
+        max-width: 55%;
+    }
+
+    main > div:first-child form input {
+        font-size: 13px;
     }
 
     main > div:first-child > a {
-        padding: 10px 12px;
-        font-size: 12px;
-        flex: 1;
+        flex: 1; /* Botão ocupa o restante (aprox. 45%) */
+        padding: 10px 5px;
+        font-size: 11px;
         justify-content: center;
+        gap: 4px;
     }
 
     header h1 {
