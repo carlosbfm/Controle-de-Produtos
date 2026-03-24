@@ -8,7 +8,7 @@ $host    = getenv('DB_HOST');
 $porta   = getenv('DB_PORT');
 $banco   = getenv('DB_NAME');
 $usuario = getenv('DB_USER');
-$senha   = getenv('DB_PASSWORD');
+$senha   = getenv('DB_PASS');
 
 // ============================================
 // 2. VALIDAÇÃO DAS VARIÁVEIS
