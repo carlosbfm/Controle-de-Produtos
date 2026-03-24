@@ -16,13 +16,16 @@ body {
 
 /* ================= HEADER (BARRA SÓLIDA AZUL) ================= */
 header {
-    background-color: #1e3a8a; /* Azul Marinho no fundo */
+    background-color: #1e3a8a;
     color: white;
     padding: 20px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 header h1 {
@@ -34,6 +37,12 @@ header h1 {
 header nav i {
     color: white;
     font-size: 22px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+header nav i:hover {
+    opacity: 0.8;
 }
 
 /* ================= CONTEÚDO PRINCIPAL ================= */
@@ -53,6 +62,7 @@ main > div:first-child {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
+    gap: 20px;
 }
 
 /* Formulário de Busca */
@@ -65,7 +75,7 @@ main > div:first-child form {
     padding: 8px 15px;
     width: 100%;
     max-width: 450px;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 main > div:first-child form:focus-within {
@@ -89,6 +99,10 @@ main > div:first-child form input {
     color: #334155;
 }
 
+main > div:first-child form input::placeholder {
+    color: #94a3b8;
+}
+
 /* Botão Novo em Azul */
 main > div:first-child > a {
     background-color: #1e3a8a;
@@ -98,21 +112,34 @@ main > div:first-child > a {
     border-radius: 6px;
     font-weight: 600;
     font-size: 14px;
-    transition: 0.2s;
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     gap: 8px;
+    white-space: nowrap;
 }
 
 main > div:first-child > a:hover {
     background-color: #1e40af;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+main > div:first-child > a:active {
+    transform: translateY(0);
 }
 
 /* ================= TABELA ESTILO CONSULTA ================= */
+.table-container {
+    overflow-x: auto;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
-    border: none !important;
+    min-width: 600px;
 }
 
 thead th {
@@ -123,7 +150,7 @@ thead th {
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
-    border-bottom: 2px solid #1e3a8a; 
+    border-bottom: 2px solid #1e3a8a;
 }
 
 tbody td {
@@ -144,15 +171,25 @@ tbody td a {
     color: #64748b;
     margin-right: 10px;
     font-size: 18px;
-    transition: 0.2s;
+    transition: all 0.2s ease;
+    display: inline-block;
 }
 
 tbody td a:hover {
     color: #1e3a8a;
+    transform: scale(1.1);
 }
 
 tbody td a:last-child:hover {
-    color: #ef4444; /* Lixeira vermelha */
+    color: #ef4444;
+}
+
+/* Mensagem quando não há dados */
+tbody tr td[colspan] {
+    text-align: center;
+    padding: 40px;
+    color: #94a3b8;
+    font-style: italic;
 }
 
 /* ================= PAGINAÇÃO ================= */
@@ -164,6 +201,7 @@ tbody td a:last-child:hover {
     margin-top: 30px;
     padding-top: 20px;
     border-top: 1px solid #e2e8f0;
+    flex-wrap: wrap;
 }
 
 .paginacao a {
@@ -175,12 +213,15 @@ tbody td a:last-child:hover {
     border-radius: 6px;
     font-size: 14px;
     font-weight: 500;
-    transition: 0.2s;
+    transition: all 0.2s ease;
+    min-width: 36px;
+    text-align: center;
 }
 
 .paginacao a:hover {
     background-color: #e2e8f0;
     border-color: #94a3b8;
+    transform: translateY(-1px);
 }
 
 /* Destaca a página atual na cor azul */
@@ -189,53 +230,81 @@ tbody td a:last-child:hover {
     color: white;
     border-color: #1e3a8a;
     cursor: default;
+    pointer-events: none;
 }
 
-/* ================= RESPONSIVIDADE (MOBILE) ================= */
+.paginacao a.ativo:hover {
+    transform: none;
+}
 
+/* Botões anterior/próximo com texto */
+.paginacao a.prev,
+.paginacao a.next {
+    font-weight: 600;
+}
+
+/* ================= RESPONSIVIDADE AVANÇADA ================= */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+    main {
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    thead th,
+    tbody td {
+        padding: 12px;
+    }
+}
+
+/* Mobile Grande (600px - 768px) */
 @media (max-width: 768px) {
-    /* 1. Ajuste do Header */
+    /* Header responsivo */
     header {
         padding: 15px 20px;
-        flex-direction: row; /* Mantém título e ícone na mesma linha */
     }
 
     header h1 {
-        font-size: 16px;
+        font-size: 18px;
+    }
+    
+    header nav i {
+        font-size: 20px;
     }
 
-    /* 2. Ajuste do Conteúdo Principal */
+    /* Conteúdo principal */
     main {
         margin: 15px;
         padding: 15px;
     }
 
-    /* 3. Empilhando a Busca e o Botão Novo */
+    /* Empilhando a Busca e o Botão Novo */
     main > div:first-child {
         flex-direction: column;
         align-items: stretch;
         gap: 15px;
+        margin-bottom: 20px;
     }
 
     main > div:first-child form {
-        max-width: 100%; /* Busca ocupa a largura toda */
+        max-width: 100%;
     }
 
     main > div:first-child > a {
-        justify-content: center; /* Centraliza o texto do botão */
+        justify-content: center;
         width: 100%;
+        white-space: normal;
     }
 
-    /* 4. O Pulo do Gato para Tabelas no Celular */
-    /* Garanta que sua <table> esteja dentro de uma <div class="table-container"> */
+    /* Tabela com scroll horizontal */
     .table-container {
-        overflow-x: auto; /* Cria barra de rolagem horizontal se necessário */
-        -webkit-overflow-scrolling: touch;
-        margin-top: 10px;
+        margin: 15px 0;
+        border-radius: 6px;
     }
-
+    
     table {
-        min-width: 600px; /* Impede a tabela de achatar demais os dados */
+        min-width: 550px;
     }
 
     thead th {
@@ -247,15 +316,158 @@ tbody td a:last-child:hover {
         padding: 10px;
         font-size: 13px;
     }
+    
+    /* Ícones de ação maiores para toque */
+    tbody td a {
+        margin-right: 12px;
+        font-size: 20px;
+        padding: 4px;
+    }
 
-    /* 5. Paginação mais amigável ao toque */
+    /* Paginação touch-friendly */
     .paginacao {
-        flex-wrap: wrap;
-        gap: 10px;
+        gap: 12px;
+        margin-top: 20px;
+        padding-top: 15px;
     }
 
     .paginacao a {
-        padding: 10px 15px; /* Botões maiores para o dedo */
+        padding: 10px 14px;
+        font-size: 15px;
+        min-width: 44px;
+    }
+}
+
+/* Mobile Pequeno (até 480px) */
+@media (max-width: 480px) {
+    header {
+        padding: 12px 15px;
+    }
+    
+    header h1 {
         font-size: 16px;
+    }
+    
+    main {
+        margin: 10px;
+        padding: 12px;
+    }
+    
+    main > div:first-child {
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+    
+    main > div:first-child form {
+        padding: 6px 12px;
+    }
+    
+    main > div:first-child form input {
+        font-size: 13px;
+    }
+    
+    main > div:first-child > a {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+    
+    .table-container {
+        margin: 10px 0;
+    }
+    
+    table {
+        min-width: 500px;
+    }
+    
+    thead th {
+        padding: 8px;
+        font-size: 10px;
+    }
+    
+    tbody td {
+        padding: 8px;
+        font-size: 12px;
+    }
+    
+    tbody td a {
+        margin-right: 8px;
+        font-size: 18px;
+    }
+    
+    .paginacao {
+        gap: 8px;
+    }
+    
+    .paginacao a {
+        padding: 8px 12px;
+        font-size: 13px;
+        min-width: 38px;
+    }
+}
+
+/* Orientação paisagem em dispositivos móveis */
+@media (max-width: 768px) and (orientation: landscape) {
+    header {
+        padding: 10px 20px;
+    }
+    
+    main {
+        margin: 10px 15px;
+    }
+    
+    .table-container {
+        max-height: 60vh;
+        overflow-y: auto;
+    }
+    
+    table {
+        min-width: 600px;
+    }
+}
+
+/* Suporte para dispositivos com telas muito grandes (4K) */
+@media (min-width: 1920px) {
+    main {
+        max-width: 1400px;
+        padding: 32px;
+    }
+    
+    thead th,
+    tbody td {
+        padding: 18px;
+        font-size: 16px;
+    }
+    
+    .paginacao a {
+        padding: 10px 16px;
+        font-size: 15px;
+    }
+}
+
+/* Melhorias de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Suporte para touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .paginacao a,
+    main > div:first-child > a,
+    tbody td a {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    tbody td a {
+        min-height: auto;
     }
 }
