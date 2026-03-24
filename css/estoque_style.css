@@ -1,7 +1,5 @@
-/* Importa a fonte moderna */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* Reset básico */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -12,13 +10,13 @@ body {
     font-family: 'Inter', sans-serif;
     background-color: #f4f6f8; 
     color: #333;
+    line-height: 1.6;
 }
 
-/* ================= HEADER (BARRA SÓLIDA AZUL) ================= */
 header {
     background-color: #1e3a8a;
     color: white;
-    padding: 20px 40px;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,45 +35,36 @@ header h1 {
 header nav i {
     color: white;
     font-size: 22px;
-    cursor: pointer;
-    transition: opacity 0.2s;
 }
 
-header nav i:hover {
-    opacity: 0.8;
-}
-
-/* ================= CONTEÚDO PRINCIPAL ================= */
 main {
     margin: 30px auto;
-    max-width: 1200px;
+    max-width: 1100px;
     background-color: #ffffff;
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     border: 1px solid #e2e8f0;
     padding: 24px;
 }
 
-/* ================= BARRA DE BUSCA E BOTÃO NOVO ================= */
 main > div:first-child {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
-    gap: 20px;
+    margin-bottom: 25px;
+    gap: 15px;
 }
 
-/* Formulário de Busca */
 main > div:first-child form {
-    display: flex !important;
+    display: flex;
     align-items: center;
     background-color: #f8fafc;
     border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 8px 15px;
-    width: 100%;
+    border-radius: 8px;
+    padding: 10px 15px;
+    flex: 1;
     max-width: 450px;
-    transition: all 0.3s ease;
+    transition: 0.3s;
 }
 
 main > div:first-child form:focus-within {
@@ -86,54 +75,41 @@ main > div:first-child form:focus-within {
 main > div:first-child form i {
     color: #94a3b8;
     margin-right: 10px;
-    font-size: 16px;
 }
 
 main > div:first-child form input {
     border: none;
     outline: none;
     background: transparent;
-    padding: 5px;
     width: 100%;
     font-size: 14px;
-    color: #334155;
 }
 
-main > div:first-child form input::placeholder {
-    color: #94a3b8;
-}
-
-/* Botão Novo em Azul */
 main > div:first-child > a {
     background-color: #1e3a8a;
     color: white;
     text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 6px;
+    padding: 12px 20px;
+    border-radius: 8px;
     font-weight: 600;
     font-size: 14px;
-    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     gap: 8px;
     white-space: nowrap;
+    transition: 0.2s;
+    text-transform: uppercase;
 }
 
 main > div:first-child > a:hover {
     background-color: #1e40af;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-main > div:first-child > a:active {
-    transform: translateY(0);
-}
-
-/* ================= TABELA ESTILO CONSULTA ================= */
 .table-container {
     overflow-x: auto;
-    margin: 20px 0;
+    -webkit-overflow-scrolling: touch;
     border-radius: 8px;
+    border: 1px solid #f1f5f9;
 }
 
 table {
@@ -143,7 +119,7 @@ table {
 }
 
 thead th {
-    background-color: #f1f5f9; 
+    background-color: #f8fafc; 
     color: #1e3a8a;            
     text-align: left;
     padding: 15px;
@@ -158,316 +134,75 @@ tbody td {
     border-bottom: 1px solid #f1f5f9;
     color: #475569;
     font-size: 14px;
-    vertical-align: middle;
 }
 
 tbody tr:hover {
     background-color: #f8fafc;
 }
 
-/* Ícones de Ação (Editar / Excluir) */
 tbody td a {
     text-decoration: none;
     color: #64748b;
     margin-right: 10px;
     font-size: 18px;
-    transition: all 0.2s ease;
-    display: inline-block;
 }
 
-tbody td a:hover {
-    color: #1e3a8a;
-    transform: scale(1.1);
-}
-
-tbody td a:last-child:hover {
-    color: #ef4444;
-}
-
-/* Mensagem quando não há dados */
-tbody tr td[colspan] {
-    text-align: center;
-    padding: 40px;
-    color: #94a3b8;
-    font-style: italic;
-}
-
-/* ================= PAGINAÇÃO ================= */
 .paginacao {
     display: flex;
     justify-content: center;
-    align-items: center;
     gap: 8px;
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid #e2e8f0;
-    flex-wrap: wrap;
+    margin-top: 25px;
 }
 
 .paginacao a {
     text-decoration: none;
     color: #1e3a8a;
-    background-color: #f8fafc;
+    background-color: #fff;
     border: 1px solid #cbd5e1;
-    padding: 8px 12px;
+    padding: 8px 14px;
     border-radius: 6px;
     font-size: 14px;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    min-width: 36px;
-    text-align: center;
+    transition: 0.2s;
 }
 
-.paginacao a:hover {
-    background-color: #e2e8f0;
-    border-color: #94a3b8;
-    transform: translateY(-1px);
-}
-
-/* Destaca a página atual na cor azul */
 .paginacao a.ativo {
     background-color: #1e3a8a;
     color: white;
     border-color: #1e3a8a;
-    cursor: default;
-    pointer-events: none;
 }
 
-.paginacao a.ativo:hover {
-    transform: none;
-}
-
-/* Botões anterior/próximo com texto */
-.paginacao a.prev,
-.paginacao a.next {
-    font-weight: 600;
-}
-
-/* ================= RESPONSIVIDADE AVANÇADA ================= */
-
-/* Tablet (768px - 1024px) */
-@media (max-width: 1024px) {
+@media (max-width: 600px) {
     main {
-        margin: 20px;
-        padding: 20px;
-    }
-    
-    thead th,
-    tbody td {
-        padding: 12px;
-    }
-}
-
-/* Mobile Grande (600px - 768px) */
-@media (max-width: 768px) {
-    /* Header responsivo */
-    header {
-        padding: 15px 20px;
-    }
-
-    header h1 {
-        font-size: 18px;
-    }
-    
-    header nav i {
-        font-size: 20px;
-    }
-
-    /* Conteúdo principal */
-    main {
-        margin: 15px;
+        margin: 10px;
         padding: 15px;
     }
 
-    /* Empilhando a Busca e o Botão Novo */
     main > div:first-child {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 15px;
-        margin-bottom: 20px;
+        flex-direction: row;
+        gap: 10px;
     }
 
     main > div:first-child form {
-        max-width: 100%;
+        max-width: 65%;
+        padding: 8px 12px;
     }
 
     main > div:first-child > a {
+        padding: 10px 12px;
+        font-size: 12px;
+        flex: 1;
         justify-content: center;
-        width: 100%;
-        white-space: normal;
     }
 
-    /* Tabela com scroll horizontal */
-    .table-container {
-        margin: 15px 0;
-        border-radius: 6px;
-    }
-    
-    table {
-        min-width: 550px;
-    }
-
-    thead th {
-        padding: 10px;
-        font-size: 11px;
-    }
-
-    tbody td {
-        padding: 10px;
-        font-size: 13px;
-    }
-    
-    /* Ícones de ação maiores para toque */
-    tbody td a {
-        margin-right: 12px;
-        font-size: 20px;
-        padding: 4px;
-    }
-
-    /* Paginação touch-friendly */
-    .paginacao {
-        gap: 12px;
-        margin-top: 20px;
-        padding-top: 15px;
-    }
-
-    .paginacao a {
-        padding: 10px 14px;
-        font-size: 15px;
-        min-width: 44px;
-    }
-}
-
-/* Mobile Pequeno (até 480px) */
-@media (max-width: 480px) {
-    header {
-        padding: 12px 15px;
-    }
-    
     header h1 {
         font-size: 16px;
     }
-    
-    main {
-        margin: 10px;
-        padding: 12px;
-    }
-    
-    main > div:first-child {
-        gap: 12px;
-        margin-bottom: 15px;
-    }
-    
-    main > div:first-child form {
-        padding: 6px 12px;
-    }
-    
-    main > div:first-child form input {
-        font-size: 13px;
-    }
-    
-    main > div:first-child > a {
-        padding: 8px 16px;
-        font-size: 13px;
-    }
-    
-    .table-container {
-        margin: 10px 0;
-    }
-    
+
     table {
         min-width: 500px;
     }
-    
-    thead th {
-        padding: 8px;
-        font-size: 10px;
-    }
-    
-    tbody td {
-        padding: 8px;
-        font-size: 12px;
-    }
-    
-    tbody td a {
-        margin-right: 8px;
-        font-size: 18px;
-    }
-    
-    .paginacao {
-        gap: 8px;
-    }
-    
-    .paginacao a {
-        padding: 8px 12px;
-        font-size: 13px;
-        min-width: 38px;
-    }
-}
 
-/* Orientação paisagem em dispositivos móveis */
-@media (max-width: 768px) and (orientation: landscape) {
-    header {
-        padding: 10px 20px;
-    }
-    
-    main {
-        margin: 10px 15px;
-    }
-    
-    .table-container {
-        max-height: 60vh;
-        overflow-y: auto;
-    }
-    
-    table {
-        min-width: 600px;
-    }
-}
-
-/* Suporte para dispositivos com telas muito grandes (4K) */
-@media (min-width: 1920px) {
-    main {
-        max-width: 1400px;
-        padding: 32px;
-    }
-    
-    thead th,
-    tbody td {
-        padding: 18px;
-        font-size: 16px;
-    }
-    
-    .paginacao a {
-        padding: 10px 16px;
-        font-size: 15px;
-    }
-}
-
-/* Melhorias de acessibilidade */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-
-/* Suporte para touch devices */
-@media (hover: none) and (pointer: coarse) {
-    .paginacao a,
-    main > div:first-child > a,
-    tbody td a {
-        min-height: 44px;
-        min-width: 44px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    tbody td a {
-        min-height: auto;
+    tbody td, thead th {
+        padding: 12px 8px;
     }
 }
